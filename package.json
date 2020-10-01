@@ -1,0 +1,22 @@
+{
+  "name": "spelling-bee-solver",
+  "version": "1.0.0",
+  "description": "Uses a trie to provide solutions for the NYTimes spelling bee game.",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest",
+    "heroku-postbuild": "cd client && npm install && npm build",
+    "dev": "concurrently \"nodemon main.js\" \"cd react-client && npm start\"",
+    "start": "node main.js"
+  },
+  "author": "Ben Ferrer",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4",
+    "jest": "^26.4.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
