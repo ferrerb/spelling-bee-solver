@@ -5,7 +5,7 @@ const { getAllWords } = require('./dictionary');
 const Trie = require('./trie');
 const { findWords } = require('./word-matcher');
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const filePath = path.resolve(__dirname, `res/words_alpha.txt`);
 
 const app = express();
