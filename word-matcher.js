@@ -1,5 +1,7 @@
 // TODO: name this better... word-matcher blah
 const findWords = (requiredChar, optionalChar, trie, minLength = 4) => {
+  requiredChar = requiredChar.toLowerCase();
+  optionalChar = optionalChar.map(c => c.toLowerCase());
   const matches = trie.findMatches(requiredChar, optionalChar);
 
   return matches

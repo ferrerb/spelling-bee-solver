@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// TODO: media queries
+
 export const Wrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
