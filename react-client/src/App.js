@@ -6,9 +6,11 @@ import {
   Form,
   FormInput,
   List,
-  ListItem
+  ListItem,
+  Header
 } from './styles';
 
+// TODO: Reorganize all this. Dealing with state in plain React is kind of obnoxious using callbacks
 const App = () => {
   const [required, setRequired] = useState('');
   const [optional, setOptional] = useState('');
@@ -39,33 +41,36 @@ const App = () => {
     }
   }
 
-  // TODO: make this a component
-  return (<Wrapper>
-    <Form onSubmit={handleSubmit}>
-      <Label>Required:
-        <input 
-          name='required'
-          placeholder='Required middle character'
-          type='text'
-          value={required}
-          onChange={handleChange} />
-      </Label>
-      <Label>Optional:
-        <input 
-          name='optional'
-          placeholder='Optional outer characters'
-          type='text'
-          value={optional}
-          onChange={handleChange} />
-      </Label>
-      <FormInput type='submit' value='Submit' />
-    </Form>
-    <Matches matches={matches} />
-  </Wrapper>);
+  // TODO: Make components of this ish
+  return (
+    <Wrapper>
+      <Header>Spelling Bee Solver!</Header>
+      <Form onSubmit={handleSubmit}>
+        <Label>Required:
+          <input 
+            name='required'
+            placeholder='Required middle character'
+            type='text'
+            value={required}
+            onChange={handleChange} />
+        </Label>
+        <Label>Optional:
+          <input 
+            name='optional'
+            placeholder='Optional outer characters'
+            type='text'
+            value={optional}
+            onChange={handleChange} />
+        </Label>
+        <FormInput type='submit' value='Submit' />
+      </Form>
+      <Matches matches={matches} />
+    </Wrapper>
+  );
 }
 
 const Matches = ({matches}) => {
-  const allMatches = matches.map(m => <Match match={m} />);
+  const allMatches = matches.map(m => <Match key={m.word} match={m} />);
 
   return (
     <List>
@@ -74,10 +79,10 @@ const Matches = ({matches}) => {
   )
 }
 
-const Match = ({match}) => {
+const Match = ({match: { word, isPangram }}) => {
   return (
-    <ListItem key={match.word}>
-      <span>{match.word} {match.isPangram ? 'PANGRAM' : ''}</span>
+    <ListItem>
+      <span>{word} {isPangram ? 'PANGRAM' : ''}</span>
     </ListItem>
   );
 }
