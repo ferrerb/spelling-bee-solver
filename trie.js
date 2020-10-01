@@ -1,6 +1,3 @@
-const { validate } = require("@babel/types");
-const { option } = require("yargs");
-
 function Trie() {
   this.head = createNode();
 }
