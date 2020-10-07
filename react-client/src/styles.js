@@ -1,4 +1,11 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: #eee8d5;
+    font-family: 'Open Sans', sans-serif;
+  }
+`;
 
 // TODO: media queries
 
@@ -12,21 +19,30 @@ export const Wrapper = styled.div`
 `;
 
 export const Header = styled.header`
-  background: yellow;
+  font-size: 28px;
 `;
 
 export const Label = styled.label`
-  padding: 2px;
+  margin: 5px;
 `;
 
 export const Form = styled.form`
+  display: flex;
   flex: 1;
+  flex-direction: column;
 `;
 
-export const Input = styled.input`
+export const SubmitButton = styled.button`
+  margin: 5px;
+  border-radius: 0px;
+  border: 0px;
+  width: 150px;
+  height: 20px;
 `;
 
 export const FormInput = styled.input`
+  width: 150px;
+  height: 20px;
 `;
 
 export const List = styled.ul`
@@ -37,5 +53,5 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  padding: 5px;
+  margin: 2px;
 `;

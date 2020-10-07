@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "heroku-postbuild": "cd react-client && npm install --dev && npm run build",
-    "dev": "concurrently \"nodemon main.js\" \"cd react-client && npm start\"",
+    "dev": "concurrently \"nodemon --ignore './react-client/' main.js\" \"cd react-client && npm start\"",
     "start": "node main.js"
   },
   "author": "Ben Ferrer",

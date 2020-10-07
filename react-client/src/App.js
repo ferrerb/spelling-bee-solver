@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import {
+  GlobalStyle,
   Wrapper,
   Label,
   Form,
   FormInput,
+  SubmitButton,
   List,
   ListItem,
   Header
@@ -31,6 +33,7 @@ const App = () => {
       const response = await fetch(`/api/matches?required=${required}&optional=${optional}`);
       if (response.status >= 400) {
         console.log(response);
+        // TODO: Error boundaries
         throw new Error('Error while fetching data');
       }
 
@@ -43,29 +46,32 @@ const App = () => {
 
   // TODO: Make components of this ish
   return (
-    <Wrapper>
-      <Header>Spelling Bee Solver!</Header>
-      <Form onSubmit={handleSubmit}>
-        <Label>Required:
-          <input 
-            name='required'
-            placeholder='Required middle character'
-            type='text'
-            value={required}
-            onChange={handleChange} />
-        </Label>
-        <Label>Optional:
-          <input 
-            name='optional'
-            placeholder='Optional outer characters'
-            type='text'
-            value={optional}
-            onChange={handleChange} />
-        </Label>
-        <FormInput type='submit' value='Submit' />
-      </Form>
-      <Matches matches={matches} />
-    </Wrapper>
+    <>
+      <GlobalStyle />
+      <Wrapper>
+        <Header>Spelling Bee Solver!</Header>
+        <Form onSubmit={handleSubmit}>
+          <Label>Required:
+            <FormInput 
+              name='required'
+              placeholder='Required middle character'
+              type='text'
+              value={required}
+              onChange={handleChange} />
+          </Label>
+          <Label>Optional:
+            <FormInput 
+              name='optional'
+              placeholder='Optional outer characters'
+              type='text'
+              value={optional}
+              onChange={handleChange} />
+          </Label>
+          <SubmitButton type='submit'>Submit!</SubmitButton>
+        </Form>
+        <Matches matches={matches} />
+      </Wrapper>
+    </> 
   );
 }
 
